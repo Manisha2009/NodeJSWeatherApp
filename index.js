@@ -1,6 +1,7 @@
 const http=require("http");
 const fs=require("fs");
 const requests=require("requests");
+const port=process.env.PORT || 4000;
 const homeFile=fs.readFileSync("index.html","utf-8");
  const replaceVal=(tempVal,orgVal)=>{
       let temperature=tempVal.replace("{%tempvalue%}",orgVal.main.temp);
@@ -30,4 +31,6 @@ const homeFile=fs.readFileSync("index.html","utf-8");
 });
     }
  });
- server.listen(4000,"127.0.0.1");
+ server.listen(port,()=>{
+   console.log(`listening to the port no at ${port}`);
+ });
